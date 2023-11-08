@@ -1,0 +1,39 @@
+.tile{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 0px 30px black;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin: 30px;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile:hover {
+    background-color: white;
+    box-shadow: 0px 0px 30px white;
+    color: black;
+    .image{
+        filter: none;
+    }
+    
+}
+
+.image{
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    align-self: center;
+    margin-right: 10px;
+    margin-top: 20px;
+    filter: invert(100%);
+}
+
+.title {
+    text-align: center;
+    margin-right: 10px;
+}
