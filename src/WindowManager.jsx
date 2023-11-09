@@ -21,7 +21,7 @@ function WindowManager() {
     case 2:
       win = (
         <Orders />
-      )
+      );
       break;
     default:
         break;
