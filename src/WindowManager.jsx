@@ -5,6 +5,7 @@ import HomePageTiles from './Components/HomePageLinkTiles/HomePageTiles';
 
 import newBillImage from './images/newbill.png'
 import ordersSymbol from './images/orders.png'
+import Orders from './Components/Orders/Orders';
 
 function WindowManager() {
   const [window,setWindow] = useState(0);
@@ -17,6 +18,11 @@ function WindowManager() {
         );
         break;
         
+    case 2:
+      win = (
+        <Orders />
+      )
+      break;
     default:
         break;
         
@@ -27,7 +33,7 @@ function WindowManager() {
         {win}
         <div className='optiontiles'>
                 <div onClick={()=>setWindow(1)}><HomePageTiles name='New Bill' image = {newBillImage} /></div>
-                <div onClick={()=>setWindow(0)}><HomePageTiles name='Orders' image = {ordersSymbol} /></div>
+                <div onClick={()=>setWindow(2)}><HomePageTiles name='Orders' image = {ordersSymbol} /></div>
     </div>
     </div> 
   )

@@ -47,6 +47,39 @@ async function importItems(setListItems){
   //setListItems((prev) => [...prev,responce.data.items]);
 }
 
+async function saveBill(cart,setCart){
+  try {
+    const response = await fetch('https://29f7-111-92-79-246.ngrok-free.app/savebill', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body : JSON.stringify({ // Stringify the JSON object
+          'cart': cart,
+          total: total,
+        }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if(data.sucess){
+        alert(`Bill Saved \nBill No: ${data.billno}`);
+        cart = [];
+        total = 0;
+        setCart([]);
+      }
+
+    } else {
+        // Handle HTTP error responses here
+        alert('HTTP Error: ' + response.status);
+    }
+} catch (error) {
+    // Handle network or other errors here
+    console.error('Error:', error);
+}
+//setListItems((prev) => [...prev,responce.data.items]);
+}
+
 
 
 function NewBill() {
@@ -142,8 +175,12 @@ function NewBill() {
               <p><b>{mrp}</b></p>
             </div>
             <div className='formelement'>
-              <p>Qauntity</p>
-              <input type="number" className='iteminput' value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+              <p>Quantity</p>
+              <div className='formcomponent'>
+                <input type="number" className='iteminput' min={0} value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
+                <button onClick={()=>{ if(quantity>0) setQuantity(quantity-1)}}>-</button>
+                <button onClick={()=>setQuantity(quantity+1)}>+</button>
+              </div>
             </div>
             <div className='formcomponent'>
               <p>Price : &nbsp;&nbsp;&nbsp;</p>
@@ -186,7 +223,9 @@ function NewBill() {
           </div>
         </div>
         <div className='savebtndiv'>
-          <button className='savebillbtn'>Save Bill</button>
+          <button className='savebillbtn' onClick={()=>{
+            saveBill(cart,setCart);
+          }}>Save Bill</button>
         </div>
     </div>
   )
