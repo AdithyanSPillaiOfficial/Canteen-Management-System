@@ -25,7 +25,7 @@ function addItem(productId, productName, mrp, quantity, setCart){
 //function to import itemlist from api to the program
 async function importItems(setListItems){
     try {
-      const response = await fetch('http://localhost:5000/getitems', {
+      const response = await fetch('https://29f7-111-92-79-246.ngrok-free.app/getItems', {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json'
