@@ -47,6 +47,14 @@
     color: white;
 }
 
+.incdecbtn {
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+
 .addtobillbtn {
     position: relative;
     border-radius: 20px;

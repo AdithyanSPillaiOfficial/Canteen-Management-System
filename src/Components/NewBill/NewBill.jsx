@@ -178,8 +178,8 @@ function NewBill() {
               <p>Quantity</p>
               <div className='formcomponent'>
                 <input type="number" className='iteminput' min={0} value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
-                <button onClick={()=>{ if(quantity>0) setQuantity(quantity-1)}}>-</button>
-                <button onClick={()=>setQuantity(quantity+1)}>+</button>
+                <button className='incdecbtn' onClick={()=>{ if(quantity>0) setQuantity(quantity-1)}}>-</button>
+                <button className='incdecbtn' onClick={()=>setQuantity(quantity+1)}>+</button>
               </div>
             </div>
             <div className='formcomponent'>
