@@ -39,6 +39,7 @@ async function importItems(setListItems){
 
       } else {
           // Handle HTTP error responses here
+          console.log(response);
           alert('HTTP Error: ' + response.status);
       }
   } catch (error) {
