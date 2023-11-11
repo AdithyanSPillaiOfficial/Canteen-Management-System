@@ -49,7 +49,7 @@ async function importItems(setListItems){
   //setListItems((prev) => [...prev,responce.data.items]);
 }
 
-async function saveBill(cart,setCart,_id){
+async function saveBill(cart,setCart,_id,total){
   try {
     const response = await fetch(serverAddress+'/savebill', {
         method: 'POST',
@@ -251,7 +251,7 @@ function NewBill(props) {
         </div>
         <div className='savebtndiv'>
           <button className='savebillbtn' onClick={()=>{
-            saveBill(cart,setCart,_id);
+            saveBill(cart,setCart,_id,total);
           }}>Save Bill</button>
         </div>
     </div>
