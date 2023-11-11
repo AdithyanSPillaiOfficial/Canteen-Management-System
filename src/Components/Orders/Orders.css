@@ -1,8 +1,41 @@
 .container {
     box-shadow: 0px 0px 30px black;
     border-radius: 20px;
-    padding: 5px;
+    padding: 10px;
     padding-left: 20px;
     padding-bottom: 20px;
     
+}
+
+.ordertable {
+    width: 100%;
+    border-collapse: collapse separate;
+    border-spacing: 20px;
+    
+}
+
+.ordertable tr {
+    border-bottom: 1px solid white;
+    padding: 8px;
+    
+}
+
+
+.ordertable tr th {
+    text-align: left;
+}
+
+.addtobillbutton {
+    padding: 30px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.addtobillbutton:hover {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: none;
 }

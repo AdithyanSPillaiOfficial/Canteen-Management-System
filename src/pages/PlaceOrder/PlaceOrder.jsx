@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {serverAddress} from '../../generalInfo.jsx'
-import './NewBill.css'
+import './PlaceOrder.css'
 var total = 0;
 var pageLoaded = false;
-var isOrdered = false;
 
 
 class BillItem {
@@ -49,16 +48,17 @@ async function importItems(setListItems){
   //setListItems((prev) => [...prev,responce.data.items]);
 }
 
-async function saveBill(cart,setCart,_id){
+async function placeOrder(cart,setCart,name,delivaryAddr,contact){
   try {
-    const response = await fetch(serverAddress+'/savebill', {
+    const response = await fetch(serverAddress+'/placeOrder', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body : JSON.stringify({ // Stringify the JSON object
-          order_id : _id,
-          isOrdered : isOrdered,
+          name : name,
+          delivaryAddr : delivaryAddr,
+          contact : contact,
           'cart': cart,
           total: total,
         }),
@@ -67,9 +67,7 @@ async function saveBill(cart,setCart,_id){
     if (response.ok) {
       const data = await response.json();
       if(data.sucess){
-        //delete entry from orders
-
-        alert(`Bill Saved \nBill No: ${data.billno}`);
+        alert(`Bill Saved \nBill No: ${data.orderno}`);
         cart = [];
         total = 0;
         setCart([]);
@@ -95,10 +93,11 @@ function NewBill(props) {
   const [productName, setProductName] = useState('');
   const [mrp, setMrp] = useState(0);
   const [quantity, setQuantity] = useState(1);
-  const [_id, setId] = useState();
   const [isListVisible, setIsListVisible] = useState(false);
   const [listItems, setListItems] = useState(['Select']);
-  const orderObject = props.orders;
+  const [name,setName] = useState('');
+  const [delivaryaddr, setDeliveryaddr] = useState('');
+  const [contact, setContact] = useState('+91');
   
 
 
@@ -110,22 +109,8 @@ function NewBill(props) {
       importItems(setListItems);
       pageLoaded = true;
     }
-    console.log(orderObject);
-    if(orderObject!==undefined){
-      
-      setCart([]);
-      total = 0;
-      setProductId('');
-      setProductName('');
-      setMrp(0);
-      setQuantity(0);
-
-      setCart(orderObject.cart);
-      setId(orderObject._id);
-      total = orderObject.total;
-      isOrdered = true;
-    }
-  }, [orderObject]);
+    
+  }, []);
   
 
   const cartList = cart.map((item,index) => {
@@ -168,11 +153,30 @@ function NewBill(props) {
   }
 
   return (
+    <div className='background'>
     <div className='container'>
-      <h1>New Bill</h1>
+      <h1>Welcome</h1>
+      <h2>Delivary Details</h2>
         <div className='incontainerdiv'>
           
           <div className='addnewitemdiv'>
+            <div className='formelement'>
+              <p>Name</p>
+              <input type="text" className='iteminput' value={name} onChange={(e)=>setName(e.target.value)} placeholder='Name' />
+            </div>
+
+            <div className='formelement'>
+              <p>Delivary Address</p>
+              <textarea name="delivaryaddress" id="delivaryaddress" cols="30" rows="5" className='iteminput' value={delivaryaddr} onChange={(e)=>setDeliveryaddr(e.target.value)} placeholder='Address'></textarea>
+            </div>
+
+            <div className='formelement'>
+              <p>Contact No</p>
+              <input type="text" className='iteminput' value={contact} onChange={(e)=>setContact(e.target.value)} placeholder='Contact No' />
+            </div>
+
+            <br /><br />
+            <h2>Add Items</h2>
             <div className='formelement'>
               <p>Enter Product Id</p>
               <input type="text" className='iteminput' value={productId} onChange={(e) => {
@@ -251,9 +255,10 @@ function NewBill(props) {
         </div>
         <div className='savebtndiv'>
           <button className='savebillbtn' onClick={()=>{
-            saveBill(cart,setCart,_id);
+            placeOrder(cart,setCart,name,delivaryaddr,contact);
           }}>Save Bill</button>
         </div>
+    </div>
     </div>
   )
 }

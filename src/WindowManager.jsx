@@ -9,18 +9,19 @@ import Orders from './Components/Orders/Orders';
 
 function WindowManager() {
   const [window,setWindow] = useState(0);
+  const [orders , setOrders] = useState();
   var win;
   switch (window) {
     
     case 1:
         win = (
-            <NewBill />
+            <NewBill orders = {orders}/>
         );
         break;
         
     case 2:
       win = (
-        <Orders />
+        <Orders setWindow = {setWindow} setOrders = {setOrders} />
       );
       break;
     default:

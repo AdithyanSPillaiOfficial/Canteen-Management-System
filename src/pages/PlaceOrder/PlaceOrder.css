@@ -1,0 +1,125 @@
+.container {
+    box-shadow: 0px 0px 30px black;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    
+}
+
+.background {
+    padding: 3%;
+}
+
+.incontainerdiv {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.addnewitemdiv {
+    flex: 1;
+    border-right: 1px solid white;
+    margin-right: 15px;
+}
+
+.cartlistdiv {
+    flex: 1.5;
+}
+
+.carttable {
+    width: 100%;
+    border-spacing: 20px;
+}
+
+.carttable tr th {
+    text-align: left;
+}
+
+.formcomponent {
+    display: flex;
+}
+
+.iteminput {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 20%;
+    margin-bottom: 20px;
+    caret-color: white;
+    outline: none;
+    color: white;
+}
+
+.incdecbtn {
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+
+.addtobillbtn {
+    position: relative;
+    border-radius: 20px;
+    width: 50%;
+    left: 22%;
+    padding: 10px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.addtobillbtn:hover {
+    box-shadow: 0px 0px 30px white;
+}
+
+.savebtndiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.savebillbtn {
+    position: relative;
+    right: 20px;
+    border-radius: 20px;
+    width: 20%;
+    padding: 10px;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.savebillbtn:hover {
+    box-shadow: 0px 0px 30px white;
+}
+
+.productlistdiv {
+    position: absolute;
+    background-color: white;
+    color: black;
+    width: max-content;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 2;
+    box-shadow: 0px 0px 30px white;
+    overflow: hidden;
+}
+
+.listelement {
+  padding: 20px;  
+  width: 73%;
+}
+
+.listelement:hover {
+    background-color: wheat;
+}
+
+
+@media screen and (max-width: 768px) {
+    .carttable {
+        width: 100%;
+        border-spacing: 2px;
+    }
+    
+    /* Additional mobile-specific styles can be added here */
+  }
