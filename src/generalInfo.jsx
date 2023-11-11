@@ -1,1 +1,1 @@
-export const serverAddress = "https://ca00-111-92-79-126.ngrok-free.app";
+export const serverAddress = process.env['SERVER_ADDRESS'];
