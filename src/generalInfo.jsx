@@ -1,1 +1,1 @@
-export const serverAddress = process.env['SERVER_ADDRESS'];
+export const serverAddress = process.env['SERVER_ADDRESS'] || process.env.SERVER_ADDRESS || 'http://localhost:5000';
