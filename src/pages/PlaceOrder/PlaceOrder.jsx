@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import { serverAddress } from '../../generalInfo';
 import './PlaceOrder.css'
 var total = 0;
 var pageLoaded = false;
@@ -26,7 +26,7 @@ function addItem(productId, productName, mrp, quantity, setCart){
 //function to import itemlist from api to the program
 async function importItems(setListItems){
     try {
-      const response = await fetch(process.env['SERVER_ADDRESS']+'/getItems', {
+      const response = await fetch(serverAddress+'/getItems', {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ async function importItems(setListItems){
 
 async function placeOrder(cart,setCart,name,delivaryAddr,contact){
   try {
-    const response = await fetch(process.env['SERVER_ADDRESS']+'/placeOrder', {
+    const response = await fetch(serverAddress+'/placeOrder', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
