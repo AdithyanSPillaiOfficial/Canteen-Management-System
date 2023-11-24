@@ -10,6 +10,8 @@ function App() {
       <Routes>
         <Route path="/" element={<PlaceOrder />}></Route>
         <Route path="/manage" element={<Home />}></Route>
+        {/* else route */}
+        <Route path='/Canteen-Management-System' element={<PlaceOrder />}></Route> 
       </Routes>
     </BrowserRouter>
   );
