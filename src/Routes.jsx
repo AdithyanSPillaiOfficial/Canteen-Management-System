@@ -12,6 +12,7 @@ function App() {
         <Route path="/manage" element={<Home />}></Route>
         {/* Route for Guthub Pages Deployments*/}
         <Route path='/Canteen-Management-System' element={<PlaceOrder />}></Route> 
+        <Route path='/Canteen-Management-System/manage' element={<Home />}></Route> 
       </Routes>
     </BrowserRouter>
   );
